@@ -21,6 +21,19 @@ describe('Stack', () => {
   })
 
   context('pop()', () => {
+    it( 'absolutely, positively returns the right thing while leaving the stack in the right state', () => {
+      const stack = new Stack()
+      const testValues = [ 1, 2, 3, 4 ]
+
+      testValues.forEach( item => stack.push( item ))
+
+      expect( stack.length() ).to.equal( testValues.length )
+
+      testValues.reverse().forEach( item => expect( stack.pop() ).to.equal( item ))
+
+      expect( stack.length() ).to.equal( 0 )
+    })
+
     it('removes an element from the stack', () => {
       const stack = new Stack()
       const element = 'hi'
